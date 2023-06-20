@@ -29,6 +29,30 @@ class LineChart extends StatelessWidget {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
 
-    return Container();
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      width: width,
+      height: height * 0.4,
+      child: CustomPaint(
+        painter: LineChartPainter(),
+      ),
+    );
+  }
+}
+
+class LineChartPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    var c = Offset(size.width * 0.5, size.height * 0.5);
+    var radius = 360.0;
+    var paint = Paint()..color = Colors.blue;
+    canvas.drawCircle(c, radius, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
   }
 }
